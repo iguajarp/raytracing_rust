@@ -1,10 +1,23 @@
 use std::{fs::File, io::Write};
 
+fn progress_bar(n: usize, total: usize, bar_size: usize) {
+    let progress = n as f32 / total as f32;
+    print!(
+        "[{}{}] {}%\r",
+        "=".repeat((progress * bar_size as f32) as usize),
+        " ".repeat(bar_size - (progress * bar_size as f32) as usize),
+        (progress * 100.0) as i32
+    );
+    std::io::stdout().flush().unwrap();
+}
+
 fn write_ppm(w: i32, h: i32, max_value: i32) {
     let mut buffer = String::new();
     buffer.push_str(format!("P3\n{} {}\n{}\n", w, h, max_value).as_str());
 
     for j in (0..h).rev() {
+        progress_bar((h - j) as usize, h as usize, 70);
+
         for i in 0..w {
             let r = i as f32 / w as f32;
             let g = j as f32 / h as f32;
