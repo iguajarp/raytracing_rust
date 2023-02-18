@@ -1,4 +1,5 @@
 use std::{fs::File, io::Write};
+
 mod vec3;
 mod progress_bar;
 
