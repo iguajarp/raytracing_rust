@@ -8,5 +8,10 @@ pub fn progress_bar(n: usize, total: usize, bar_size: usize) {
       " ".repeat(bar_size - (progress * bar_size as f32) as usize),
       (progress * 100.0) as i32
   );
+  
+  if progress == 1.0 {
+    println!();
+  }
   std::io::stdout().flush().unwrap();
+
 }

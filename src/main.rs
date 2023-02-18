@@ -3,6 +3,7 @@ mod vec3;
 mod progress_bar;
 
 use progress_bar::progress_bar;
+use vec3::Vec3;
 
 fn write_ppm(w: i32, h: i32, max_value: i32) {
     let mut buffer = String::new();
