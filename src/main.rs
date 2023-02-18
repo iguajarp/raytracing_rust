@@ -1,10 +1,11 @@
 use std::{fs::File, io::Write};
 
-mod vec3;
+mod color;
 mod progress_bar;
+mod vec3;
 
+use color::{write_color, Color};
 use progress_bar::progress_bar;
-use vec3::Vec3;
 
 fn write_ppm(w: i32, h: i32, max_value: i32) {
     let mut buffer = String::new();
@@ -16,18 +17,16 @@ fn write_ppm(w: i32, h: i32, max_value: i32) {
         for i in 0..w {
             let r = i as f32 / w as f32;
             let g = j as f32 / h as f32;
-            let b: f32 = 0.2;
+            let b = 0.25;
+            let pxl_color: Color = Color::new(r, g, b);
 
-            let ir = (255.99 * r) as i32;
-            let ig = (255.99 * g) as i32;
-            let ib = (255.99 * b) as i32;
-
-            buffer.push_str(format!("{} {} {}\n", ir, ig, ib).as_str());
+            write_color(&mut buffer, pxl_color)
         }
     }
     let mut file = File::create("example.ppm").expect("error creating example.ppm");
     file.write_all(buffer.as_bytes())
         .expect("error writing to file");
+    buffer.clear();
 }
 
 fn main() {

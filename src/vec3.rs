@@ -11,6 +11,18 @@ impl Vec3 {
         Vec3 { e: [e0, e1, e2] }
     }
 
+    pub fn x(&self) -> f32 {
+        self.e[0]
+    }
+
+    pub fn y(&self) -> f32 {
+        self.e[1]
+    }
+    
+    pub fn z(&self) -> f32 {
+        self.e[2]
+    }
+
     pub fn dot(vec1: &Vec3, vec2: &Vec3) -> f32 {
         vec1.e[0] * vec2.e[0] + vec1.e[1] * vec2.e[1] + vec1.e[2] * vec2.e[2]
     }
