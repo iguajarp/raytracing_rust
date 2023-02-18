@@ -1,15 +1,8 @@
 use std::{fs::File, io::Write};
+mod vec3;
+mod progress_bar;
 
-fn progress_bar(n: usize, total: usize, bar_size: usize) {
-    let progress = n as f32 / total as f32;
-    print!(
-        "[{}{}] {}%\r",
-        "=".repeat((progress * bar_size as f32) as usize),
-        " ".repeat(bar_size - (progress * bar_size as f32) as usize),
-        (progress * 100.0) as i32
-    );
-    std::io::stdout().flush().unwrap();
-}
+use progress_bar::progress_bar;
 
 fn write_ppm(w: i32, h: i32, max_value: i32) {
     let mut buffer = String::new();
