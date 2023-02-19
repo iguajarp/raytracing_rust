@@ -14,6 +14,7 @@ use vec3::Vec3;
 fn ray_color(r: Ray) -> Color {
     let unit_direction = Vec3::unit_vector(r.direction());
     let t = 0.5 * (unit_direction.y() + 1.0);
+    // if t is close to 0 it will be almost Color{1, 1, 1}. And the base blue will be the complement of 1 but with a color. Max 1 for color
     Color::new(1.0, 1.0, 1.0) * (1.0 - t) + Color::new(0.5, 0.7, 1.0) * t
 }
 
@@ -49,6 +50,7 @@ fn main() {
             let direction =
                 &(&lower_left_corner + &(&horizontal * u)) + &(&(&vertical * v) - &origin);
 
+            // makes a Ray that point to the current pixel. Calculate the color and draw it.
             let r = Ray::new(&origin, &direction);
             let pxl_color: Color = ray_color(r);
 
