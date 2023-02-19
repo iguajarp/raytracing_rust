@@ -18,8 +18,6 @@ fn ray_color(r: Ray) -> Color {
 }
 
 fn main() {
-    let width = 256;
-    let height = 256;
     let max_value = 255;
 
     // image
@@ -40,7 +38,7 @@ fn main() {
         &origin - &(&horizontal / 2) - (&vertical / 2) - Vec3::new(0.0, 0.0, focal_length);
 
     let mut buffer = String::new();
-    buffer.push_str(format!("P3\n{} {}\n{}\n", image_height, image_width, max_value).as_str());
+    buffer.push_str(format!("P3\n{} {}\n{}\n", image_width, image_height, max_value).as_str());
 
     for j in (0..image_height).rev() {
         progress_bar((image_height - j) as usize, image_height as usize, 70);
