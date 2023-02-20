@@ -15,8 +15,9 @@ fn hit_sphere(center: &Vec3, radius: f32, r: &Ray) -> bool {
     let oc = r.origin() - center;
     let direction_dot = Vec3::dot(r.direction(), r.direction());
     let oc_direction_dot_2 = 2.0 * Vec3::dot(&oc, r.direction());
-    let length_until_sphere = Vec3::dot(&oc, &oc) - radius * radius;
-    let discriminant = oc_direction_dot_2 * oc_direction_dot_2 - 4.0 * direction_dot * length_until_sphere;
+    let dot_until_sphere = Vec3::dot(&oc, &oc) - radius * radius;
+    let discriminant =
+        oc_direction_dot_2 * oc_direction_dot_2 - 4.0 * direction_dot * dot_until_sphere;
     discriminant > 0.0
 }
 
@@ -48,7 +49,7 @@ fn main() {
     let horizontal = Vec3::new(viewport_width, 0.0, 0.0); // a bit more than 2.0
     let vertical = Vec3::new(0.0, viewport_height, 0.0);
     let lower_left_corner =
-        &origin - &(&horizontal / 2) - (&vertical / 2) - Vec3::new(0.0, 0.0, focal_length);
+        &origin - &(&horizontal / 2.0) - (&vertical / 2.0) - Vec3::new(0.0, 0.0, focal_length);
 
     let mut buffer = String::new();
     buffer.push_str(format!("P3\n{} {}\n{}\n", image_width, image_height, max_value).as_str());

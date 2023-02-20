@@ -172,7 +172,7 @@ impl ops::Div<i32> for Vec3 {
     type Output = Self;
 
     fn div(self, rhs: i32) -> Self::Output {
-        self * (1 / rhs)
+        self * (1 as f32 / rhs as f32)
     }
 }
 
@@ -180,6 +180,6 @@ impl ops::Div<i32> for &Vec3 {
     type Output = Vec3;
 
     fn div(self, rhs: i32) -> Self::Output {
-        self * (1 / rhs)
+        self * (1 as f32 / rhs as f32)
     }
 }
