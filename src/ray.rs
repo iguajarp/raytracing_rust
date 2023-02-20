@@ -12,6 +12,7 @@
 
 use crate::vec3::Vec3;
 
+#[derive(Debug)]
 pub struct Ray<'a> {
     orig: &'a Vec3,
     dir: &'a Vec3,
@@ -31,6 +32,6 @@ impl<'a> Ray<'a> {
     }
 
     pub fn at(&self, t: f32) -> Vec3 {
-        *&self.orig + &(*&self.dir * t)
+        self.orig + &(self.dir * t)
     }
 }
