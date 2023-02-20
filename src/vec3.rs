@@ -40,11 +40,11 @@ impl Vec3 {
     }
 
     pub fn length(&self) -> f32 {
-        (self.length_squared() as f32).sqrt()
+        self.length_squared().sqrt()
     }
 
-    pub fn length_squared(&self) -> usize {
-        (self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2]) as usize
+    pub fn length_squared(&self) -> f32 {
+        (self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2]) as f32
     }
 }
 
