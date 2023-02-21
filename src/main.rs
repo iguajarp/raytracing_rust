@@ -16,7 +16,7 @@ fn hit_sphere(center: &Vec3, radius: f32, r: &Ray) -> f32 {
     let a = r.direction().length_squared();
     let half_b = Vec3::dot(&oc, r.direction());
     let c = oc.length_squared() - (radius * radius);
-    let discriminant = half_b * half_b - 4.0 * a * c;
+    let discriminant = half_b * half_b - a * c;
     if discriminant < 0.0 {
         return -1.0;
     } else {
