@@ -5,6 +5,8 @@ mod ppm;
 mod progress_bar;
 mod ray;
 mod vec3;
+mod hittable;
+mod sphere;
 
 use color::{write_color, Color};
 use progress_bar::progress_bar;

@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 use std::ops;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Vec3 {
     e: [f32; 3],
 }
